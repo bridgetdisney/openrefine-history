@@ -19,7 +19,7 @@
       "columnDetails": [],
       "limit": 0
     },
-    "description": "Reconcile cells in column Publisher to type Q45400320"
+    "description": "Reconcile cells in column Publisher to type Q45400320 ADDME"
   },
   {
     "op": "core/recon",
