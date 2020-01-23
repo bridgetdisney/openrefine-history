@@ -1,0 +1,139 @@
+[
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "Publisher",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://tools.wmflabs.org/openrefine-wikidata/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q45400320",
+        "name": "open-access publisher"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column Publisher to type Q45400320"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "Publisher",
+    "config": {
+      "mode": "standard-service",
+      "service": "http://refine.codefork.com/reconcile/viaf",
+      "identifierSpace": "http://rdf.freebase.com/ns/user/hangy/viaf",
+      "schemaSpace": "http://rdf.freebase.com/ns/type.object.id",
+      "type": {
+        "id": "/organization/organization",
+        "name": "Corporate Name"
+      },
+      "autoMatch": false,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column Publisher to type /organization/organization"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "Publisher",
+    "similarValue": "MDPI AG",
+    "judgment": "matched",
+    "match": {
+      "id": "126554238",
+      "name": "Molecular Diversity Preservation International",
+      "types": [
+        "/organization/organization"
+      ],
+      "score": 0.08695652173913043
+    },
+    "shareNewTopics": false,
+    "description": "Match item Molecular Diversity Preservation International (126554238) for cells containing \"MDPI AG\" in column Publisher"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Publisher",
+          "expression": "value",
+          "columnName": "Publisher",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "International Union of Crystallography",
+                "l": "International Union of Crystallography"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "record-based"
+    },
+    "columnName": "Publisher",
+    "similarValue": "International Union of Crystallography",
+    "judgment": "matched",
+    "match": {
+      "id": "158070937",
+      "name": "International Union of Crystallography.",
+      "types": [
+        "/organization/organization"
+      ],
+      "score": 0.9743589743589743
+    },
+    "shareNewTopics": false,
+    "description": "Match item International Union of Crystallography. (158070937) for cells containing \"International Union of Crystallography\" in column Publisher"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Publisher",
+          "expression": "value",
+          "columnName": "Publisher",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "International Union of Crystallography",
+                "l": "International Union of Crystallography"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "record-based"
+    },
+    "baseColumnName": "Publisher",
+    "expression": "grel:cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "VIAF ID",
+    "columnInsertIndex": 9,
+    "description": "Create column VIAF ID at index 9 based on column Publisher using expression grel:cell.recon.match.id"
+  }
+]
